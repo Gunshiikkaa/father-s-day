@@ -72,7 +72,7 @@ export default function Home() {
             <MemoryWall />
 
             {/* Sunset Cinematic climax and Footer */}
-            <CinematicEnding />
+            <CinematicEnding audioCtx={audioCtx} masterGain={masterGain} />
 
           </div>
 
