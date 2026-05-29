@@ -16,7 +16,7 @@ interface Profile {
 }
 
 interface ProfileSelectorProps {
-  onSelect: (profile: Profile) => void;
+  onSelect: (profile: Profile, audioCtx: AudioContext | null, masterGain: GainNode | null) => void;
 }
 
 export const PROFILES: Profile[] = [
@@ -47,9 +47,95 @@ export default function ProfileSelector({ onSelect }: ProfileSelectorProps) {
 
   const handleSelect = (profile: Profile) => {
     setSelectedId(profile.id);
+
+    let audioCtx: AudioContext | null = null;
+    let masterGain: GainNode | null = null;
+
+    try {
+      // Initialize Web Audio API on click (user interaction)
+      const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext;
+      audioCtx = new AudioContextClass();
+
+      // Master Gain for ambient music (default gain: 0.4)
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+      masterGain.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 1.0);
+      masterGain.connect(audioCtx.destination);
+
+      // Synthesize a booming, cinematic Netflix-style "Ta-dum" bass sweep!
+      const now = audioCtx.currentTime;
+      
+      // Osc 1: Deep Bass drone (D2 - 73.42 Hz sliding to A1 - 55 Hz)
+      const osc1 = audioCtx.createOscillator();
+      const osc1Gain = audioCtx.createGain();
+      const bassFilter = audioCtx.createBiquadFilter();
+      
+      osc1.type = "sawtooth";
+      osc1.frequency.setValueAtTime(73.42, now);
+      osc1.frequency.exponentialRampToValueAtTime(55, now + 1.2);
+      
+      bassFilter.type = "lowpass";
+      bassFilter.frequency.setValueAtTime(180, now);
+      
+      osc1Gain.gain.setValueAtTime(0, now);
+      osc1Gain.gain.linearRampToValueAtTime(0.25, now + 0.15);
+      osc1Gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+
+      osc1.connect(bassFilter);
+      bassFilter.connect(osc1Gain);
+      osc1Gain.connect(masterGain);
+      osc1.start(now);
+      osc1.stop(now + 1.5);
+
+      // Osc 2: Sub-Bass sine wave (D1 - 36.71 Hz)
+      const osc2 = audioCtx.createOscillator();
+      const osc2Gain = audioCtx.createGain();
+      
+      osc2.type = "sine";
+      osc2.frequency.setValueAtTime(36.71, now);
+      
+      osc2Gain.gain.setValueAtTime(0, now);
+      osc2Gain.gain.linearRampToValueAtTime(0.35, now + 0.15);
+      osc2Gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+      
+      osc2.connect(osc2Gain);
+      osc2Gain.connect(masterGain);
+      osc2.start(now);
+      osc2.stop(now + 1.5);
+
+      // Noise Impact/Timpani effect
+      const bufferSize = audioCtx.sampleRate * 0.5;
+      const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const channelData = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        channelData[i] = Math.random() * 2 - 1;
+      }
+      
+      const noiseSource = audioCtx.createBufferSource();
+      noiseSource.buffer = noiseBuffer;
+      
+      const noiseGain = audioCtx.createGain();
+      const noiseFilter = audioCtx.createBiquadFilter();
+      
+      noiseFilter.type = "bandpass";
+      noiseFilter.frequency.setValueAtTime(220, now);
+      noiseFilter.Q.setValueAtTime(1.5, now);
+      
+      noiseGain.gain.setValueAtTime(0.18, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+
+      noiseSource.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(masterGain);
+      noiseSource.start(now);
+
+    } catch (e) {
+      console.warn("Audio Context failed to start inside ProfileSelector:", e);
+    }
+
     // Let the animation play before revealing the dashboard
     setTimeout(() => {
-      onSelect(profile);
+      onSelect(profile, audioCtx, masterGain);
     }, 1300);
   };
 

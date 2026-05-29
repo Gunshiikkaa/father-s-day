@@ -40,10 +40,17 @@ export default function Home() {
       {showPreloader ? (
         <Preloader 
           onComplete={() => setShowPreloader(false)} 
-          onAudioInit={handleAudioInit} 
         />
       ) : !currentProfile ? (
-        <ProfileSelector onSelect={(p) => setCurrentProfile(p)} />
+        <ProfileSelector 
+          onSelect={(profile, ctx, gain) => {
+            if (ctx && gain) {
+              setAudioCtx(ctx);
+              setMasterGain(gain);
+            }
+            setCurrentProfile(profile);
+          }} 
+        />
       ) : (
         <>
           {/* Real-time Three.js 3D background behind content */}
