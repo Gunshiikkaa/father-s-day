@@ -39,34 +39,10 @@ export const defaultWallItems: WallItem[] = [
     caption: "Grease-stained hands, mechanical maps, and that wide, proud smile after the engine roared to life.",
     image: "https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600&auto=format&fit=crop&q=80",
   },
-  {
-    id: "wall-4",
-    type: "classic",
-    title: "Teaching Me to Swim",
-    year: "2005",
-    caption: "Splashing in the deep end. You let me float but never let go of my shoulders.",
-    image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&auto=format&fit=crop&q=80",
-  },
-  {
-    id: "wall-5",
-    type: "polaroid",
-    title: "Priceless Napping",
-    year: "2015",
-    caption: "Fallen fast asleep on the lazy chair with a history book resting on his chest.",
-    image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&auto=format&fit=crop&q=80",
-  },
-  {
-    id: "wall-6",
-    type: "classic",
-    title: "Summertime Fishing Pier",
-    year: "2008",
-    caption: "Waiting for a bite. Hours of silence, yet it was the best conversation we ever had.",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
-  },
 ];
 
 export default function MemoryWall() {
-  const [items, setItems] = useLocalStorage<WallItem[]>("dadflix-wall-items", defaultWallItems);
+  const [items, setItems] = useLocalStorage<WallItem[]>("dadflix-wall-items-v2", defaultWallItems);
   const [selectedItem, setSelectedItem] = useState<WallItem | null>(null);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [uploadError, setUploadError] = useState("");
