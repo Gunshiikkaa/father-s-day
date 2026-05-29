@@ -3,7 +3,18 @@
 import { useState, useEffect } from "react";
 import { Search, Bell, ChevronDown } from "lucide-react";
 
-export default function Header() {
+interface HeaderProps {
+  currentProfile?: {
+    id: string;
+    name: string;
+    avatarGradient: string;
+    initial: string;
+    role: string;
+  };
+  onProfileChange?: (profile: any) => void;
+}
+
+export default function Header({ currentProfile, onProfileChange }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Toggle header background on scroll
@@ -86,8 +97,8 @@ export default function Header() {
           <Search className="w-4 h-4" />
         </button>
 
-        <span className="text-xs font-mono font-bold tracking-widest text-amber-500/80 bg-amber-500/5 border border-amber-500/10 px-2 py-0.5 rounded hidden sm:inline">
-          KIDS
+        <span className="text-xs font-mono font-bold tracking-widest text-amber-500/80 bg-amber-500/5 border border-amber-500/10 px-2 py-0.5 rounded hidden sm:inline uppercase">
+          {currentProfile?.id === "dad" ? "G.O.A.T." : "MEMBER"}
         </span>
 
         <button className="hover:text-neutral-300 transition-colors relative cursor-pointer">
@@ -99,8 +110,8 @@ export default function Header() {
         <div className="flex items-center gap-1.5 cursor-pointer group relative">
           
           {/* Custom Avatar Icon */}
-          <div className="w-8 h-8 rounded bg-gradient-to-tr from-amber-600 to-amber-500 flex items-center justify-center font-bold text-xs text-black border border-amber-500/20">
-            D
+          <div className={`w-8 h-8 rounded bg-gradient-to-tr ${currentProfile?.avatarGradient || "from-red-600 via-red-500 to-amber-500"} flex items-center justify-center font-bold text-xs text-black border border-amber-500/20`}>
+            {currentProfile?.initial || "D"}
           </div>
           
           <ChevronDown className="w-3.5 h-3.5 text-neutral-400 group-hover:rotate-180 transition-transform duration-300" />
@@ -108,17 +119,46 @@ export default function Header() {
           {/* Profile Dropdown Box */}
           <div className="absolute top-full right-0 mt-2 w-52 bg-neutral-950 border border-neutral-900 rounded-md shadow-2xl p-3 hidden group-hover:block pointer-events-auto">
             <div className="space-y-3">
-              <div className="flex items-center gap-2.5">
-                <div className="w-6 h-6 rounded bg-gradient-to-tr from-yellow-500 to-amber-400 text-black flex items-center justify-center font-bold text-[10px]">
+              {/* Dad Profile row */}
+              <div 
+                className={`flex items-center gap-2.5 p-1.5 rounded transition-colors ${currentProfile?.id === "dad" ? "bg-neutral-900/60 pointer-events-none" : "hover:bg-neutral-900/40"}`}
+                onClick={() => {
+                  if (currentProfile?.id !== "dad" && onProfileChange) {
+                    onProfileChange({
+                      id: "dad",
+                      name: "Dad",
+                      avatarGradient: "from-red-600 via-red-500 to-amber-500",
+                      initial: "D",
+                      role: "The G.O.A.T. 👑"
+                    });
+                  }
+                }}
+              >
+                <div className="w-6 h-6 rounded bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 text-black flex items-center justify-center font-bold text-[10px]">
                   D
                 </div>
-                <span className="text-xs font-bold text-neutral-300">Dad Profile</span>
+                <span className={`text-xs font-bold ${currentProfile?.id === "dad" ? "text-white" : "text-neutral-400 hover:text-white"}`}>Dad (G.O.A.T.)</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <div className="w-6 h-6 rounded bg-neutral-800 text-white flex items-center justify-center font-bold text-[10px]">
-                  C
+
+              {/* Me Profile row */}
+              <div 
+                className={`flex items-center gap-2.5 p-1.5 rounded transition-colors ${currentProfile?.id === "me" ? "bg-neutral-900/60 pointer-events-none" : "hover:bg-neutral-900/40"}`}
+                onClick={() => {
+                  if (currentProfile?.id !== "me" && onProfileChange) {
+                    onProfileChange({
+                      id: "me",
+                      name: "Me",
+                      avatarGradient: "from-blue-600 via-indigo-500 to-violet-500",
+                      initial: "M",
+                      role: "The Creator 🚀"
+                    });
+                  }
+                }}
+              >
+                <div className="w-6 h-6 rounded bg-gradient-to-tr from-blue-600 via-indigo-500 to-violet-500 text-black flex items-center justify-center font-bold text-[10px]">
+                  M
                 </div>
-                <span className="text-xs font-bold text-neutral-400 hover:text-white transition-colors">Child Profile</span>
+                <span className={`text-xs font-bold ${currentProfile?.id === "me" ? "text-white" : "text-neutral-400 hover:text-white"}`}>Me (Creator)</span>
               </div>
               
               <div className="h-[1px] bg-neutral-900 my-2" />

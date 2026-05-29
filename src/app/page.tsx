@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Preloader from "@/components/Preloader";
+import ProfileSelector from "@/components/ProfileSelector";
 import MemoryCanvas from "@/components/MemoryCanvas";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -16,6 +17,7 @@ import AudioController from "@/components/AudioController";
 
 export default function Home() {
   const [showPreloader, setShowPreloader] = useState(true);
+  const [currentProfile, setCurrentProfile] = useState<any>(null);
   const [audioCtx, setAudioCtx] = useState<AudioContext | null>(null);
   const [masterGain, setMasterGain] = useState<GainNode | null>(null);
 
@@ -40,6 +42,8 @@ export default function Home() {
           onComplete={() => setShowPreloader(false)} 
           onAudioInit={handleAudioInit} 
         />
+      ) : !currentProfile ? (
+        <ProfileSelector onSelect={(p) => setCurrentProfile(p)} />
       ) : (
         <>
           {/* Real-time Three.js 3D background behind content */}
@@ -49,7 +53,7 @@ export default function Home() {
           <div className="relative z-10 w-full flex flex-col">
             
             {/* Sticky Navigation Header */}
-            <Header />
+            <Header currentProfile={currentProfile} onProfileChange={setCurrentProfile} />
 
             {/* Hero Header */}
             <Hero onStartClick={handleScrollToSliders} />
