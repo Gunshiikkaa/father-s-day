@@ -1,19 +1,36 @@
 @import "tailwindcss";
 
+@theme {
+  --color-amber-50: #ffe5e5;
+  --color-amber-100: #ffb3b3;
+  --color-amber-200: #ff8080;
+  --color-amber-300: #ff4d55;
+  --color-amber-400: #ff1a24;
+  --color-amber-500: #e50914; /* Netflix Red */
+  --color-amber-600: #b20710; /* Deep Netflix Red */
+  --color-amber-700: #80050a;
+  --color-amber-800: #4d0306;
+  --color-amber-900: #1a0102;
+  
+  --color-yellow-400: #ff1a24;
+  --color-yellow-500: #e50914;
+  --color-yellow-600: #b20710;
+}
+
 @layer base {
   :root {
     --background: 0 0% 0%; /* Absolute black */
     --foreground: 0 0% 98%;
     --card: 0 0% 5%;
     --card-foreground: 0 0% 90%;
-    --accent: 43 96% 62%; /* Warm gold #f5c44f */
-    --accent-light: 41 100% 75%; /* Soft gold #ffe58f */
-    --accent-dark: 35 91% 38%; /* Deep amber bronze */
-    --amber-glow: 38 100% 50%;
+    --accent: 357 92% 47%; /* Netflix Red #e50914 */
+    --accent-light: 356 100% 65%; /* Soft Red #ff4d55 */
+    --accent-dark: 356 92% 30%; /* Deep Red #99060d */
+    --amber-glow: 357 92% 47%;
   }
 
   body {
-    background-color: rgb(5, 5, 5);
+    background-color: rgb(20, 20, 20); /* Netflix Charcoal #141414 */
     color: hsl(var(--foreground));
     overflow-x: hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -65,9 +82,9 @@
   90% { transform:translate(5%, -5%); }
 }
 
-/* Premium Gold Text */
+/* Premium Red Text Gradient */
 .gold-text-gradient {
-  background: linear-gradient(135deg, #ffeaa7 0%, #f5c44f 50%, #d4af37 70%, #b8860b 100%);
+  background: linear-gradient(135deg, #ffb3b3 0%, #e50914 50%, #b20710 70%, #500000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -79,20 +96,20 @@
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(245, 196, 79, 0.08) 0%, rgba(245, 196, 79, 0.03) 40%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(229, 9, 20, 0.08) 0%, rgba(229, 9, 20, 0.03) 40%, rgba(0, 0, 0, 0) 70%);
   border-radius: 50%;
   pointer-events: none;
   filter: blur(40px);
 }
 
 .ambient-glow {
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, rgba(255, 140, 0, 0.04) 50%, rgba(0, 0, 0, 0) 100%);
+  background: radial-gradient(circle at center, rgba(229, 9, 20, 0.1) 0%, rgba(178, 7, 16, 0.03) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 .volumetric-ray {
   position: absolute;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, rgba(245, 196, 79, 0.18), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(229, 9, 20, 0.15), transparent);
   transform: rotate(25deg);
   pointer-events: none;
   filter: blur(1px);
@@ -100,21 +117,21 @@
 
 /* Glassmorphism Classes */
 .cinematic-glass {
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(20, 20, 20, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(245, 196, 79, 0.15);
+  border: 1px solid rgba(229, 9, 20, 0.15);
 }
 
 .cinematic-glass-hover:hover {
-  background: rgba(15, 15, 15, 0.8);
-  border-color: rgba(245, 196, 79, 0.35);
-  box-shadow: 0 0 25px rgba(245, 196, 79, 0.1);
+  background: rgba(25, 25, 25, 0.95);
+  border-color: rgba(229, 9, 20, 0.35);
+  box-shadow: 0 0 25px rgba(229, 9, 20, 0.1);
 }
 
 /* Logo specific styling */
 .logo-glow {
-  text-shadow: 0 0 10px rgba(245, 196, 79, 0.3), 0 0 30px rgba(245, 196, 79, 0.1);
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.4), 0 0 35px rgba(229, 9, 20, 0.15);
 }
 
 /* Custom sound indicator bar animation */
@@ -122,7 +139,7 @@
   display: inline-block;
   width: 3px;
   height: 2px;
-  background-color: #f5c44f;
+  background-color: #e50914;
   animation: soundBars 1s ease-in-out infinite alternate;
 }
 .bar-1 { animation-delay: 0.1s; }
@@ -168,7 +185,7 @@ html.lenis, html.lenis body {
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 245, 215, 0.35) 50%,
+    rgba(255, 230, 230, 0.35) 50%,
     rgba(255, 255, 255, 0) 100%
   );
   transform: skewX(-25deg);

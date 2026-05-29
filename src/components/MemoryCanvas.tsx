@@ -45,7 +45,7 @@ function VintageCamera(props: any) {
       {/* Metallic top plate */}
       <mesh position={[0, 0.65, 0]}>
         <boxGeometry args={[2, 0.1, 0.8]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.2} metalness={0.95} />
+        <meshStandardMaterial color="#e50914" roughness={0.2} metalness={0.95} />
       </mesh>
       {/* Lens */}
       <mesh position={[0, 0, 0.5]} rotation={[Math.PI / 2, 0, 0]}>
@@ -55,12 +55,12 @@ function VintageCamera(props: any) {
       {/* Lens Ring */}
       <mesh position={[0, 0, 0.7]} rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.48, 0.48, 0.05, 32]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.1} metalness={0.95} />
+        <meshStandardMaterial color="#e50914" roughness={0.1} metalness={0.95} />
       </mesh>
       {/* Shutter Button */}
       <mesh position={[-0.6, 0.72, 0.1]}>
         <cylinderGeometry args={[0.1, 0.1, 0.1, 16]} />
-        <meshStandardMaterial color="#d4af37" roughness={0.2} metalness={0.9} />
+        <meshStandardMaterial color="#b20710" roughness={0.2} metalness={0.9} />
       </mesh>
     </group>
   );
@@ -84,12 +84,12 @@ function CoffeeMug(props: any) {
       {/* Mug Body */}
       <mesh>
         <cylinderGeometry args={[0.7, 0.7, 1.4, 32]} />
-        <meshStandardMaterial color="#f5c44f" roughness={0.1} metalness={0.8} />
+        <meshStandardMaterial color="#e50914" roughness={0.1} metalness={0.8} />
       </mesh>
       {/* Handle */}
       <mesh position={[0.7, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <torusGeometry args={[0.4, 0.12, 16, 32]} />
-        <meshStandardMaterial color="#b8860b" roughness={0.2} metalness={0.9} />
+        <meshStandardMaterial color="#1a1a1a" roughness={0.2} metalness={0.9} />
       </mesh>
     </group>
   );
@@ -118,21 +118,21 @@ function GoldTrophy(props: any) {
       {/* Stem */}
       <mesh position={[0, -0.4, 0]}>
         <cylinderGeometry args={[0.15, 0.25, 0.8, 16]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.1} metalness={0.95} />
+        <meshStandardMaterial color="#e50914" roughness={0.1} metalness={0.95} />
       </mesh>
       {/* Bowl */}
       <mesh position={[0, 0.5, 0]}>
         <cylinderGeometry args={[0.8, 0.4, 1.0, 32]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.1} metalness={0.95} />
+        <meshStandardMaterial color="#e50914" roughness={0.1} metalness={0.95} />
       </mesh>
       {/* Handles */}
       <mesh position={[-0.8, 0.5, 0]} rotation={[0, 0, Math.PI / 4]}>
         <torusGeometry args={[0.35, 0.08, 8, 24]} />
-        <meshStandardMaterial color="#ffe58f" roughness={0.1} metalness={0.9} />
+        <meshStandardMaterial color="#ff8080" roughness={0.1} metalness={0.9} />
       </mesh>
       <mesh position={[0.8, 0.5, 0]} rotation={[0, 0, -Math.PI / 4]}>
         <torusGeometry args={[0.35, 0.08, 8, 24]} />
-        <meshStandardMaterial color="#ffe58f" roughness={0.1} metalness={0.9} />
+        <meshStandardMaterial color="#ff8080" roughness={0.1} metalness={0.9} />
       </mesh>
     </group>
   );
@@ -156,7 +156,7 @@ function WristWatch(props: any) {
       {/* Clock body */}
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.7, 0.7, 0.15, 32]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.1} metalness={0.95} />
+        <meshStandardMaterial color="#e50914" roughness={0.1} metalness={0.95} />
       </mesh>
       {/* Clock Face */}
       <mesh position={[0, 0, 0.08]} rotation={[Math.PI / 2, 0, 0]}>
@@ -194,17 +194,17 @@ function Necktie(props: any) {
       {/* Knot */}
       <mesh position={[0, 0.7, 0]} rotation={[0, 0, Math.PI]}>
         <coneGeometry args={[0.25, 0.35, 4]} />
-        <meshStandardMaterial color="#b8860b" roughness={0.6} metalness={0.3} />
+        <meshStandardMaterial color="#b20710" roughness={0.6} metalness={0.3} />
       </mesh>
       {/* Tie Body */}
       <mesh position={[0, -0.2, 0]}>
         <boxGeometry args={[0.3, 1.4, 0.05]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.5} metalness={0.3} />
+        <meshStandardMaterial color="#e50914" roughness={0.5} metalness={0.3} />
       </mesh>
       {/* Tie Tip */}
       <mesh position={[0, -1.0, 0]} rotation={[0, 0, Math.PI / 4]}>
         <boxGeometry args={[0.21, 0.21, 0.05]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.5} metalness={0.3} />
+        <meshStandardMaterial color="#e50914" roughness={0.5} metalness={0.3} />
       </mesh>
     </group>
   );
@@ -228,17 +228,17 @@ function Toolbox(props: any) {
       {/* Box base */}
       <mesh>
         <boxGeometry args={[1.6, 1.0, 0.8]} />
-        <meshStandardMaterial color="#8b0000" roughness={0.5} metalness={0.2} /> {/* Dark red */}
+        <meshStandardMaterial color="#e50914" roughness={0.5} metalness={0.2} />
       </mesh>
       {/* Lid details */}
       <mesh position={[0, 0.52, 0]}>
         <boxGeometry args={[1.64, 0.1, 0.84]} />
-        <meshStandardMaterial color="#a9a9a9" roughness={0.3} metalness={0.8} /> {/* Metal rim */}
+        <meshStandardMaterial color="#a9a9a9" roughness={0.3} metalness={0.8} />
       </mesh>
       {/* Handle */}
       <mesh position={[0, 0.65, 0]}>
         <torusGeometry args={[0.25, 0.06, 8, 16, Math.PI]} />
-        <meshStandardMaterial color="#e5b25d" roughness={0.1} metalness={0.95} />
+        <meshStandardMaterial color="#b20710" roughness={0.1} metalness={0.95} />
       </mesh>
     </group>
   );
@@ -272,7 +272,7 @@ function PolaroidFrame(props: any) {
       {/* Outer border glow outline */}
       <mesh position={[0, 0, -0.01]}>
         <boxGeometry args={[2.05, 2.45, 0.02]} />
-        <meshBasicMaterial color="#e5b25d" wireframe />
+        <meshBasicMaterial color="#e50914" wireframe />
       </mesh>
     </group>
   );
@@ -301,7 +301,7 @@ function SparkParticles() {
     <Points ref={pointsRef} positions={positions} stride={3}>
       <PointMaterial
         transparent
-        color="#ffe58f"
+        color="#ff8080"
         size={0.06}
         sizeAttenuation={true}
         depthWrite={false}
@@ -329,9 +329,9 @@ export default function MemoryCanvas() {
     // Elegant CSS-based fallback if WebGL fails
     return (
       <div className="absolute inset-0 w-full h-full overflow-hidden opacity-30 pointer-events-none z-0">
-        <div className="absolute top-[20%] left-[10%] w-24 h-24 rounded-full bg-amber-500/10 blur-xl animate-pulse" />
-        <div className="absolute top-[60%] right-[15%] w-32 h-32 rounded-full bg-amber-600/10 blur-xl animate-pulse" />
-        <div className="absolute bottom-[10%] left-[40%] w-40 h-40 rounded-full bg-amber-400/5 blur-3xl" />
+        <div className="absolute top-[20%] left-[10%] w-24 h-24 rounded-full bg-red-600/10 blur-xl animate-pulse" />
+        <div className="absolute top-[60%] right-[15%] w-32 h-32 rounded-full bg-red-800/10 blur-xl animate-pulse" />
+        <div className="absolute bottom-[10%] left-[40%] w-40 h-40 rounded-full bg-red-500/5 blur-3xl" />
       </div>
     );
   }
@@ -347,10 +347,10 @@ export default function MemoryCanvas() {
         <fog attach="fog" args={["#000000", 6, 12]} />
         
         {/* Lights */}
-        <ambientLight intensity={0.4} color="#ffe58f" />
-        <directionalLight position={[5, 5, 5]} intensity={1.5} color="#ffe58f" />
-        <pointLight position={[-4, -4, 2]} intensity={0.8} color="#ff8c00" />
-        <spotLight position={[0, 10, 0]} intensity={2.0} distance={15} angle={Math.PI / 4} penumbra={1} color="#f5c44f" />
+        <ambientLight intensity={0.5} color="#ffffff" />
+        <directionalLight position={[5, 5, 5]} intensity={1.5} color="#ffffff" />
+        <pointLight position={[-4, -4, 2]} intensity={1.2} color="#e50914" />
+        <spotLight position={[0, 10, 0]} intensity={2.5} distance={15} angle={Math.PI / 4} penumbra={1} color="#e50914" />
 
         {/* 3D Floating Objects */}
         <VintageCamera posX={-2.8} posY={1.8} posZ={0} seed={1.2} />
