@@ -7,6 +7,7 @@ import MemoryCanvas from "@/components/MemoryCanvas";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SlidersSection from "@/components/SlidersSection";
+import Spotlight from "@/components/Spotlight";
 import TopRated from "@/components/TopRated";
 import MemoryWall from "@/components/MemoryWall";
 import CinematicEnding from "@/components/CinematicEnding";
@@ -67,6 +68,9 @@ export default function Home() {
 
             {/* Top Rated moments row (Top 4 Hits) */}
             <TopRated />
+
+            {/* Spotlight highlight section */}
+            <Spotlight />
 
             {/* Infinite memory masonry gallery */}
             <MemoryWall />
