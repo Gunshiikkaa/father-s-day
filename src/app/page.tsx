@@ -8,9 +8,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SlidersSection from "@/components/SlidersSection";
 import Spotlight from "@/components/Spotlight";
-import LifeTimeline from "@/components/LifeTimeline";
-import TopRated from "@/components/TopRated";
-import QuoteAndLetter from "@/components/QuoteAndLetter";
 import MemoryWall from "@/components/MemoryWall";
 import CinematicEnding from "@/components/CinematicEnding";
 import AudioController from "@/components/AudioController";
@@ -70,15 +67,6 @@ export default function Home() {
 
             {/* Spotlight highlight section */}
             <Spotlight />
-
-            {/* Milestone Interactive Timeline */}
-            <LifeTimeline />
-
-            {/* Awards section */}
-            <TopRated />
-
-            {/* Emotional Quotes and Parchment typewritten letter */}
-            <QuoteAndLetter />
 
             {/* Infinite memory masonry gallery */}
             <MemoryWall />
