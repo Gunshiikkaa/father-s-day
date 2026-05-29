@@ -104,23 +104,22 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
   };
 
   return (
-    <section id={id} className="relative py-20 bg-gradient-to-b from-black via-zinc-950 to-black select-none z-10">
+    <section id={id} className="relative py-14 bg-[#141414] select-none z-10">
       
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 
-            className="text-2xl md:text-3xl font-extrabold font-serif tracking-wider text-white"
-            style={{ fontFamily: "var(--font-cinzel), serif" }}
+            className="text-xl md:text-2xl font-black font-sans tracking-wide text-white"
           >
-            BROWSE TRIBUTE COLLECTIONS
+            BROWSE TRIBUTE SELECTIONS
           </h2>
-          <p className="text-xs md:text-sm text-neutral-500 font-light mt-1">
-            Hover cards to expand details. Click the edit icon to customize any memory with your own story.
+          <p className="text-xs text-neutral-500 mt-1">
+            Click edit to customize any memory with your own story and photos.
           </p>
         </div>
         <button
           onClick={handleResetDefaults}
-          className="text-xs border border-amber-500/20 hover:border-amber-500/80 bg-amber-500/5 hover:bg-amber-500/10 text-amber-400 px-4 py-2 rounded transition-all cursor-pointer font-mono"
+          className="text-xs border border-amber-500/20 hover:border-amber-500/80 bg-amber-500/5 hover:bg-amber-500/10 text-amber-400 px-4 py-2 rounded transition-all cursor-pointer font-mono font-bold"
         >
           Restore Original Stories
         </button>
@@ -130,10 +129,10 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
         const categoryMemories = memories.filter((m) => m.category === category);
 
         return (
-          <div key={category} className="group relative w-full mb-16 overflow-visible">
+          <div key={category} className="group relative w-full mb-10 overflow-visible">
             
             {/* Category title */}
-            <h3 className="max-w-7xl mx-auto px-4 md:px-8 text-lg sm:text-xl font-semibold tracking-wide text-amber-500/90 mb-4 font-serif">
+            <h3 className="max-w-7xl mx-auto px-4 md:px-8 text-sm md:text-base font-bold tracking-wide text-neutral-300 hover:text-white transition-colors duration-300 mb-2 font-sans">
               {category}
             </h3>
 
@@ -143,15 +142,15 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
               {/* Navigation Left Button */}
               <button
                 onClick={() => scroll(category, "left")}
-                className="absolute left-0 top-0 bottom-0 w-12 bg-black/60 hover:bg-black/85 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 cursor-pointer border-r border-amber-500/10"
+                className="absolute left-0 top-0 bottom-0 w-12 bg-black/50 hover:bg-black/75 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 cursor-pointer"
               >
-                <ChevronLeft className="w-8 h-8 text-amber-500" />
+                <ChevronLeft className="w-8 h-8 text-white" />
               </button>
 
               {/* Slider list */}
               <div
                 id={`slider-${category.replace(/\s+/g, "-")}`}
-                className="w-full flex items-stretch gap-4 overflow-x-auto overflow-y-visible px-4 md:px-8 py-4 scroll-smooth scrollbar-none"
+                className="w-full flex items-stretch gap-2.5 overflow-x-auto overflow-y-visible px-4 md:px-8 py-3 scroll-smooth scrollbar-none"
                 style={{ scrollSnapType: "x mandatory" }}
               >
                 {categoryMemories.map((memory) => (
@@ -159,12 +158,12 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
                     key={memory.id}
                     layoutId={`card-${memory.id}`}
                     whileHover={{ 
-                      y: -10, 
-                      scale: 1.05,
-                      boxShadow: "0 10px 30px rgba(245, 196, 79, 0.25)"
+                      y: -6, 
+                      scale: 1.06,
+                      boxShadow: "0 15px 30px rgba(0, 0, 0, 0.5)"
                     }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="relative flex-shrink-0 w-64 md:w-72 bg-neutral-900 border border-neutral-800 rounded-md overflow-hidden cursor-pointer group/card group-hover:scale-95 hover:!scale-100 transition-transform duration-300"
+                    transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                    className="relative flex-shrink-0 w-64 sm:w-72 bg-neutral-900 border border-neutral-900 rounded overflow-hidden cursor-pointer group/card group-hover:scale-95 hover:!scale-100 transition-transform duration-300 shadow-lg"
                     style={{ scrollSnapAlign: "start" }}
                   >
                     {/* Media Image Area */}
@@ -173,39 +172,50 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
                       <img
                         src={memory.image}
                         alt={memory.title}
-                        className="w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-700 brightness-90 group-hover/card:brightness-100"
+                        className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-700 brightness-[0.85] group-hover/card:brightness-100"
                         loading="lazy"
                       />
-                      {/* Overlay card gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent opacity-80" />
                       
                       {/* Interactive Edit Button Overlay */}
                       <button
                         onClick={(e) => handleEditClick(e, memory)}
-                        className="absolute top-2 right-2 p-2 rounded-full bg-black/60 hover:bg-amber-500 text-white hover:text-black border border-amber-500/20 hover:border-transparent opacity-0 group-hover/card:opacity-100 transition-all duration-300 z-10 cursor-pointer"
+                        className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 hover:bg-amber-500 text-white hover:text-black border border-neutral-800 opacity-0 group-hover/card:opacity-100 transition-all duration-300 z-10 cursor-pointer"
                         title="Customize story"
                       >
-                        <Edit2 className="w-3.5 h-3.5" />
+                        <Edit2 className="w-3 h-3" />
                       </button>
                     </div>
 
-                    {/* Reflection / shine sweep on card hover */}
-                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-[-25deg] left-[-150%] group-hover/card:animate-[sweep_1.5s_ease-in-out_infinite] pointer-events-none" />
-
                     {/* Card Content details */}
-                    <div className="p-4 flex flex-col justify-between">
+                    <div className="p-3.5 flex flex-col justify-between bg-neutral-900/95">
                       <div>
-                        <div className="flex justify-between items-center gap-2 mb-1">
-                          <h4 className="text-white font-bold tracking-wide text-sm truncate uppercase font-serif">
-                            {memory.title || "Untitled Memory"}
-                          </h4>
-                          <span className="text-amber-500 font-mono font-bold text-xs bg-amber-500/10 px-2 py-0.5 rounded">
-                            {memory.year || "----"}
-                          </span>
+                        {/* Netflix-style tag line */}
+                        <div className="flex items-center gap-1.5 text-[10px] text-green-500 font-bold font-sans">
+                          <span>98% Match</span>
+                          <span className="text-neutral-600">•</span>
+                          <span className="border border-neutral-700/60 px-1 rounded text-[8px] text-neutral-300 font-bold font-mono">GOAT</span>
+                          <span className="text-neutral-600">•</span>
+                          <span className="text-neutral-400 font-mono">{memory.year}</span>
+                          <span className="text-neutral-600">•</span>
+                          <span className="text-neutral-400 font-bold">HD</span>
                         </div>
-                        <p className="text-neutral-400 text-xs font-light leading-relaxed line-clamp-3">
+
+                        <h4 className="text-white font-bold tracking-wide text-xs truncate mt-2 uppercase font-serif">
+                          {memory.title || "Untitled Memory"}
+                        </h4>
+                        
+                        <p className="text-neutral-400 text-[10px] sm:text-xs font-light leading-normal line-clamp-2 mt-1.5">
                           {memory.description || "Click edit to write this tribute story."}
                         </p>
+
+                        {/* Netflix genres indicators */}
+                        <div className="flex items-center gap-1 text-[9px] text-amber-500/80 font-bold font-sans mt-3">
+                          <span>Heartfelt</span>
+                          <span className="text-neutral-600">•</span>
+                          <span>Inspiring</span>
+                          <span className="text-neutral-600">•</span>
+                          <span>Original</span>
+                        </div>
                       </div>
                     </div>
                   </motionFramer.div>
@@ -214,14 +224,11 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
                 {/* Add new memory card placeholder */}
                 <button
                   onClick={() => handleAddNewClick(category)}
-                  className="flex-shrink-0 w-64 md:w-72 border-2 border-dashed border-neutral-800 hover:border-amber-500/50 bg-neutral-900/30 hover:bg-amber-500/5 rounded-md flex flex-col items-center justify-center p-6 text-center group/add cursor-pointer transition-all duration-300 min-h-[220px]"
+                  className="flex-shrink-0 w-64 sm:w-72 border border-dashed border-neutral-800 hover:border-amber-500/50 bg-neutral-900/30 hover:bg-amber-500/5 rounded flex flex-col items-center justify-center p-6 text-center group/add cursor-pointer transition-all duration-300 min-h-[220px]"
                 >
-                  <Plus className="w-10 h-10 text-neutral-600 group-hover/add:text-amber-500 group-hover/add:scale-110 transition-all" />
-                  <span className="text-sm font-bold text-neutral-400 group-hover/add:text-amber-400 mt-3 font-serif tracking-wider uppercase">
+                  <Plus className="w-8 h-8 text-neutral-600 group-hover/add:text-amber-500 group-hover/add:scale-110 transition-all" />
+                  <span className="text-xs font-bold text-neutral-400 group-hover/add:text-amber-400 mt-2 tracking-wider uppercase">
                     Add Custom Story
-                  </span>
-                  <span className="text-xs text-neutral-600 group-hover/add:text-amber-500/60 mt-1 font-mono">
-                    Upload your own media
                   </span>
                 </button>
               </div>
@@ -229,9 +236,9 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
               {/* Navigation Right Button */}
               <button
                 onClick={() => scroll(category, "right")}
-                className="absolute right-0 top-0 bottom-0 w-12 bg-black/60 hover:bg-black/85 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 cursor-pointer border-l border-amber-500/10"
+                className="absolute right-0 top-0 bottom-0 w-12 bg-black/50 hover:bg-black/75 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 cursor-pointer"
               >
-                <ChevronRight className="w-8 h-8 text-amber-500" />
+                <ChevronRight className="w-8 h-8 text-white" />
               </button>
             </div>
           </div>

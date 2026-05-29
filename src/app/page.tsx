@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Preloader from "@/components/Preloader";
 import MemoryCanvas from "@/components/MemoryCanvas";
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SlidersSection from "@/components/SlidersSection";
 import Spotlight from "@/components/Spotlight";
@@ -47,6 +48,9 @@ export default function Home() {
           {/* Foreground page content */}
           <div className="relative z-10 w-full flex flex-col">
             
+            {/* Sticky Navigation Header */}
+            <Header />
+
             {/* Hero Header */}
             <Hero onStartClick={handleScrollToSliders} />
 

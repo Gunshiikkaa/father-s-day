@@ -1,139 +1,128 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play, ChevronDown } from "lucide-react";
+import { Play, Info } from "lucide-react";
 
 interface HeroProps {
   onStartClick: () => void;
 }
 
 export default function Hero({ onStartClick }: HeroProps) {
-  // Logo text animation variants
-  const logoVariants: any = {
-    hidden: { filter: "blur(25px)", opacity: 0, scale: 0.85 },
-    visible: { 
-      filter: "blur(0px)", 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        duration: 2.2, 
-        ease: "easeOut",
-        delay: 0.2
-      }
-    }
-  };
-
   const itemVariants: any = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 25, opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
-      transition: { duration: 1.0, ease: "easeOut" }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex flex-col justify-center items-center overflow-hidden bg-transparent select-none z-10">
+    <section className="relative w-full h-[95vh] min-h-[600px] flex flex-col justify-center items-start overflow-hidden bg-transparent select-none z-10 pl-6 sm:pl-12 md:pl-20 md:pr-24">
       
-      {/* Spotlight Ambient Behind Logo */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] rounded-full bg-radial-gradient(circle, rgba(245, 196, 79, 0.07) 0%, rgba(255, 140, 0, 0.02) 50%, transparent 70%) pointer-events-none filter blur-2xl z-0" />
-
-      {/* Volumetric Light Rays */}
+      {/* Dynamic light ray backdrop overlay */}
       <div className="absolute top-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        <div className="volumetric-ray left-[20%] top-0 h-[80vh] opacity-30 animate-pulse" style={{ animationDuration: "8s" }} />
-        <div className="volumetric-ray left-[45%] top-0 h-[90vh] opacity-20 animate-pulse" style={{ animationDuration: "12s" }} />
-        <div className="volumetric-ray left-[75%] top-0 h-[85vh] opacity-25 animate-pulse" style={{ animationDuration: "10s" }} />
+        <div className="volumetric-ray left-[15%] top-0 h-[80vh] opacity-20 animate-pulse" style={{ animationDuration: "8s" }} />
+        <div className="volumetric-ray left-[35%] top-0 h-[90vh] opacity-15 animate-pulse" style={{ animationDuration: "12s" }} />
       </div>
 
-      <div className="flex flex-col items-center text-center px-4 max-w-4xl z-10">
-        {/* Cinematic Glowing DADFLIX Logo */}
+      <div className="flex flex-col items-start text-left max-w-2xl z-10 pt-16 space-y-5">
+        
+        {/* N Original Series Tag */}
         <motion.div
-          variants={logoVariants}
-          initial="hidden"
-          animate="visible"
-          className="relative mb-6"
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex items-center gap-1.5"
+        >
+          <span className="font-serif font-black text-amber-500 text-3xl logo-glow">N</span>
+          <span className="text-[10px] sm:text-xs font-bold tracking-[0.3em] text-neutral-300 uppercase font-sans">
+            Tribute Series
+          </span>
+        </motion.div>
+
+        {/* Cinematic Glowing DADFLIX Logo / Title */}
+        <motion.div
+          initial={{ opacity: 0, filter: "blur(15px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.5, delay: 0.4 }}
+          className="relative"
         >
           <h1 
-            className="text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-[0.2em] font-serif logo-glow text-white select-none pointer-events-none"
+            className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wide font-serif logo-glow text-white"
             style={{ fontFamily: "var(--font-cinzel), serif" }}
           >
-            DAD<span className="text-amber-500">FLIX</span>
+            THE GREATEST STORY<br />
+            EVER TOLD: <span className="gold-text-gradient">DAD</span>
           </h1>
-          
-          {/* Light sweep flash across logo */}
-          <motion.div 
-            initial={{ left: "-150%" }}
-            animate={{ left: "150%" }}
-            transition={{ delay: 2.0, duration: 1.8, ease: "easeInOut", repeat: Infinity, repeatDelay: 10 }}
-            className="absolute top-0 bottom-0 w-[40%] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] pointer-events-none"
-          />
         </motion.div>
 
-        {/* Tribute Label */}
+        {/* Netflix Metadata Row */}
         <motion.div
-          initial={{ opacity: 0, letterSpacing: "0.2em" }}
-          animate={{ opacity: 0.8, letterSpacing: "0.4em" }}
-          transition={{ delay: 1.8, duration: 1.2 }}
-          className="text-amber-500/90 font-bold uppercase text-xs sm:text-sm tracking-[0.4em] mb-8 font-mono"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+          className="flex flex-wrap items-center gap-3 text-xs md:text-sm font-sans"
         >
-          A Netflix Original Tribute Documenting the GOAT
+          <span className="text-green-500 font-bold font-mono">99% Match</span>
+          <span className="text-neutral-400 font-mono">2026</span>
+          <span className="border border-neutral-700/60 px-1.5 py-0.5 rounded text-[10px] text-neutral-300 font-bold font-mono">
+            U/A 16+
+          </span>
+          <span className="text-neutral-400 font-mono">1 Season</span>
+          <span className="border border-neutral-700/60 px-1 py-0.5 rounded text-[9px] text-neutral-400 font-bold font-mono">
+            Ultra HD 4K
+          </span>
+          <span className="border border-neutral-700/60 px-1 py-0.5 rounded text-[9px] text-neutral-400 font-bold font-mono">
+            HDR
+          </span>
         </motion.div>
 
-        {/* Title Headline */}
-        <motion.h2
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 1.4 }}
-          className="text-3xl sm:text-5xl md:text-6xl font-black uppercase text-white tracking-wider mb-6"
-        >
-          THE GREATEST STORY <br />
-          EVER TOLD: <span className="gold-text-gradient">DAD</span>
-        </motion.h2>
-
-        {/* Subtitle */}
+        {/* Description / Synopsis */}
         <motion.p
           variants={itemVariants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 1.8 }}
-          className="text-neutral-400 text-sm sm:text-lg font-light leading-relaxed max-w-xl mb-12"
+          transition={{ delay: 0.9 }}
+          className="text-neutral-300 text-xs sm:text-base font-light leading-relaxed max-w-xl text-shadow-md"
         >
-          Every sacrifice. Every lesson. Every laugh. <br />
-          <span className="text-amber-500/80 font-medium">Now streaming forever in our hearts.</span>
+          An emotional, biographical documentary celebrating the quiet sacrifices, wise advice, and groan-worthy jokes of the ultimate family leader. Now streaming in our hearts forever.
         </motion.p>
 
-        {/* CTA Button */}
+        {/* Play & Info Action Buttons */}
         <motion.div
           variants={itemVariants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: 2.2 }}
+          transition={{ delay: 1.1 }}
+          className="flex items-center gap-3.5 pt-2"
         >
           <button
             onClick={onStartClick}
-            className="light-sweep relative group flex items-center gap-3 bg-gradient-to-r from-amber-600 via-amber-500 to-yellow-600 hover:from-amber-500 hover:via-yellow-500 hover:to-amber-400 text-black px-10 py-5 rounded-md font-bold text-sm sm:text-base tracking-[0.15em] uppercase transition-all shadow-2xl shadow-amber-500/10 hover:shadow-amber-500/30 hover:scale-[1.03] cursor-pointer"
+            className="flex items-center gap-2.5 bg-white hover:bg-neutral-200 text-black px-7 py-3 rounded font-bold text-sm sm:text-base tracking-wide transition-all shadow-lg active:scale-95 cursor-pointer"
           >
-            <Play className="w-5 h-5 fill-black text-black group-hover:scale-110 transition-transform" />
-            Start Watching Memories
+            <Play className="w-5 h-5 fill-black text-black" />
+            Play Memories
+          </button>
+          
+          <button
+            onClick={onStartClick}
+            className="flex items-center gap-2.5 bg-neutral-600/35 hover:bg-neutral-600/50 border border-neutral-700/20 text-white px-7 py-3 rounded font-bold text-sm sm:text-base tracking-wide transition-all shadow-lg active:scale-95 cursor-pointer"
+          >
+            <Info className="w-5 h-5 text-white" />
+            More Info
           </button>
         </motion.div>
+
       </div>
 
-      {/* Pulsing Down Arrow */}
-      <motion.button
-        onClick={onStartClick}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 0.6, y: [0, 8, 0] }}
-        transition={{ delay: 3.0, duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-10 flex flex-col items-center gap-2 text-neutral-500 hover:text-amber-500 cursor-pointer z-10"
-      >
-        <span className="text-xs tracking-[0.2em] uppercase font-mono">Scroll Down</span>
-        <ChevronDown className="w-5 h-5" />
-      </motion.button>
+      {/* Right-aligned Age Rating Badge overlay */}
+      <div className="absolute right-0 bottom-[18vh] bg-neutral-900/60 border-l-[3px] border-neutral-400/80 px-4 py-1.5 flex items-center justify-center pointer-events-none select-none z-10 pr-12 font-mono font-bold text-xs sm:text-sm text-neutral-300">
+        GOAT
+      </div>
 
-      {/* Ambient Floor Dark Vignette Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent pointer-events-none z-0" />
+      {/* Shadow Vignette fading up at the bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#141414] via-[#141414]/30 to-transparent pointer-events-none z-0" />
     </section>
   );
 }
