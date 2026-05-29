@@ -32,10 +32,7 @@ export default function Header({ currentProfile, onProfileChange }: HeaderProps)
 
   const navLinks = [
     { label: "Home", href: "#" },
-    { label: "Childhood", href: "#memories-sliders" },
-    { label: "Lessons", href: "#memories-sliders" },
-    { label: "Vacations", href: "#memories-sliders" },
-    { label: "Achievements", href: "#memories-sliders" },
+    { label: "Memories", href: "#memories-sliders" },
     { label: "My List", href: "#" },
   ];
 

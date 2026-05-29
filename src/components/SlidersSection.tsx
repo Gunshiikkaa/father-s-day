@@ -19,12 +19,7 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
 
   // Group rows
   const categories = [
-    "Childhood Adventures",
-    "Dad's Best Lessons",
-    "Family Vacations",
-    "Funny Dad Moments",
-    "Life's Greatest Hero",
-    "Dad's Greatest Achievements",
+    "Memories"
   ];
 
   // Horizontally scroll a slider row
@@ -111,7 +106,7 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
           <h2 
             className="text-xl md:text-2xl font-black font-sans tracking-wide text-white"
           >
-            BROWSE TRIBUTE SELECTIONS
+            MEMORIES
           </h2>
           <p className="text-xs text-neutral-500 mt-1">
             Click edit to customize any memory with your own story and photos.
@@ -130,11 +125,6 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
 
         return (
           <div key={category} className="group relative w-full mb-10 overflow-visible">
-            
-            {/* Category title */}
-            <h3 className="max-w-7xl mx-auto px-4 md:px-8 text-sm md:text-base font-bold tracking-wide text-neutral-300 hover:text-white transition-colors duration-300 mb-2 font-sans">
-              {category}
-            </h3>
 
             {/* Slider container wrapper */}
             <div className="relative w-full overflow-visible">
