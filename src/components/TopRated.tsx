@@ -53,7 +53,7 @@ export default function TopRated() {
   };
 
   return (
-    <section className="relative py-16 bg-black select-none z-10">
+    <section className="relative pt-4 pb-2 bg-black select-none z-10">
       
       {/* Background soft red glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[35vw] h-[35vw] rounded-full bg-radial-gradient(circle, rgba(229, 9, 20, 0.03) 0%, transparent 70%) pointer-events-none filter blur-3xl" />
@@ -62,7 +62,7 @@ export default function TopRated() {
         
         {/* Section Title */}
         <h2 
-          className="text-lg md:text-xl font-bold font-sans tracking-wide text-white mb-6 uppercase"
+          className="text-lg md:text-xl font-bold font-sans tracking-wide text-white mb-3 uppercase"
           style={{ color: "#e5e5e5" }}
         >
           Top 4 Hits in Hearts Today

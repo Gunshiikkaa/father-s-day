@@ -127,7 +127,7 @@ export default function MemoryWall() {
   const col3 = items.filter((_, idx) => idx % 3 === 2);
 
   return (
-    <section className="relative py-28 px-4 md:px-8 bg-zinc-950/40 backdrop-blur-sm overflow-hidden z-10 select-none">
+    <section className="relative py-6 px-4 md:px-8 bg-zinc-950/40 backdrop-blur-sm overflow-hidden z-10 select-none">
       
       {/* Background spotlights */}
       <div className="absolute right-0 top-1/3 w-[50vw] h-[50vw] rounded-full bg-radial-gradient(circle, rgba(245, 196, 79, 0.03) 0%, transparent 70%) pointer-events-none filter blur-3xl" />
@@ -135,7 +135,7 @@ export default function MemoryWall() {
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-4">
           <div>
             <h2 
               className="text-2xl md:text-3xl font-extrabold font-serif tracking-wider text-white uppercase"

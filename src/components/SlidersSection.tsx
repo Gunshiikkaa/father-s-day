@@ -99,9 +99,9 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
   };
 
   return (
-    <section id={id} className="relative py-14 bg-[#141414] select-none z-10">
+    <section id={id} className="relative pt-6 pb-2 bg-[#141414] select-none z-10">
       
-      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 
             className="text-xl md:text-2xl font-black font-sans tracking-wide text-white"
@@ -124,7 +124,7 @@ export default function SlidersSection({ id }: SlidersSectionProps) {
         const categoryMemories = memories.filter((m) => m.category === category);
 
         return (
-          <div key={category} className="group relative w-full mb-10 overflow-visible">
+          <div key={category} className="group relative w-full mb-2 overflow-visible">
 
             {/* Slider container wrapper */}
             <div className="relative w-full overflow-visible">

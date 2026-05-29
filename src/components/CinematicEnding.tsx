@@ -140,7 +140,7 @@ export default function CinematicEnding({ audioCtx, masterGain }: CinematicEndin
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full min-h-screen flex flex-col justify-between items-center bg-[#0c0c0c] overflow-hidden z-10 select-none pt-28 pb-10"
+      className="relative w-full min-h-screen flex flex-col justify-between items-center bg-[#0c0c0c] overflow-hidden z-10 select-none pt-8 pb-4"
     >
       {/* Background Volumetric Glow */}
       <div className="absolute inset-0 bg-gradient-to-t from-red-950/10 via-[#0e0e0e] to-black pointer-events-none z-0" />
@@ -274,19 +274,19 @@ export default function CinematicEnding({ audioCtx, masterGain }: CinematicEndin
       </div>
 
       {/* Main Center Card (Content from Climax, Design from Birthday Special Card) */}
-      <div className="flex-1 flex flex-col justify-center items-center px-4 w-full max-w-2xl z-20 text-center space-y-6">
+      <div className="flex-1 flex flex-col justify-center items-center px-4 w-full max-w-2xl z-20 text-center space-y-4">
         
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="relative bg-zinc-950/80 backdrop-blur-xl border border-neutral-800/80 rounded-2xl p-6 sm:p-10 shadow-2xl shadow-red-950/10 w-full overflow-hidden"
+          className="relative bg-zinc-950/80 backdrop-blur-xl border border-neutral-800/80 rounded-2xl p-5 sm:p-7 shadow-2xl shadow-red-950/10 w-full overflow-hidden"
         >
           {/* Subtle reflection card glow overlay */}
           <div className="absolute -inset-[500px] bg-gradient-to-tr from-transparent via-white/5 to-transparent translate-x-[-150%] animate-[sweep_6s_linear_infinite] pointer-events-none" />
 
           {/* Top Circular Gradient Crown Badge */}
-          <div className="relative w-14 h-14 rounded-full bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 flex items-center justify-center mx-auto mb-6 border-2 border-red-500/30 shadow-lg shadow-red-600/20">
+          <div className="relative w-14 h-14 rounded-full bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 flex items-center justify-center mx-auto mb-4 border-2 border-red-500/30 shadow-lg shadow-red-600/20">
             <Crown className="w-6 h-6 text-black fill-black" />
             
             {/* Pulsing ring */}
@@ -300,14 +300,14 @@ export default function CinematicEnding({ audioCtx, masterGain }: CinematicEndin
 
           {/* Main Hero Header */}
           <h2 
-            className="text-2xl sm:text-4xl lg:text-5xl font-black font-sans tracking-wide text-white uppercase leading-tight mb-6"
+            className="text-2xl sm:text-4xl lg:text-5xl font-black font-sans tracking-wide text-white uppercase leading-tight mb-4"
             style={{ fontFamily: "var(--font-outfit), sans-serif" }}
           >
             THANK YOU FOR BEING THE <span className="text-red-500">HERO</span> OF MY <span className="text-red-500">STORY</span>.
           </h2>
 
           {/* Quote Block */}
-          <p className="text-neutral-400 text-sm sm:text-base font-light italic max-w-md mx-auto leading-relaxed border-t border-neutral-900 pt-5 mb-8 font-serif">
+          <p className="text-neutral-400 text-sm sm:text-base font-light italic max-w-md mx-auto leading-relaxed border-t border-neutral-900 pt-5 mb-4 font-serif">
             &ldquo;Some heroes wear capes. Mine simply answered to &lsquo;Dad&rsquo;.&rdquo;
           </p>
 
@@ -359,7 +359,7 @@ export default function CinematicEnding({ audioCtx, masterGain }: CinematicEndin
       </div>
 
       {/* Elegant Cinematic Footer */}
-      <footer className="w-full border-t border-neutral-900 bg-black/90 py-10 px-6 text-center space-y-3 z-20">
+      <footer className="w-full border-t border-neutral-900 bg-black/90 py-6 px-6 text-center space-y-3 z-20">
         <div className="flex items-center justify-center gap-1.5 text-red-500 font-bold uppercase tracking-[0.2em] text-xs font-serif">
           <span>DadFlix</span>
           <span className="text-neutral-700">|</span>

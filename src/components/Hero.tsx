@@ -18,7 +18,7 @@ export default function Hero({ onStartClick }: HeroProps) {
   };
 
   return (
-    <section className="relative w-full h-[95vh] min-h-[600px] flex flex-col justify-center items-start overflow-hidden bg-transparent select-none z-10 pl-6 sm:pl-12 md:pl-20 md:pr-24">
+    <section className="relative w-full h-[80vh] min-h-[500px] flex flex-col justify-center items-start overflow-hidden bg-transparent select-none z-10 pl-6 sm:pl-12 md:pl-20 md:pr-24">
       
       {/* Dynamic light ray backdrop overlay */}
       <div className="absolute top-0 w-full h-full pointer-events-none overflow-hidden z-0">
@@ -26,7 +26,7 @@ export default function Hero({ onStartClick }: HeroProps) {
         <div className="volumetric-ray left-[35%] top-0 h-[90vh] opacity-15 animate-pulse" style={{ animationDuration: "12s" }} />
       </div>
 
-      <div className="flex flex-col items-start text-left max-w-2xl z-10 pt-16 space-y-5">
+      <div className="flex flex-col items-start text-left max-w-2xl z-10 pt-12 space-y-3">
         
         {/* N Original Series Tag */}
         <motion.div
@@ -95,7 +95,7 @@ export default function Hero({ onStartClick }: HeroProps) {
           initial="hidden"
           animate="visible"
           transition={{ delay: 1.1 }}
-          className="flex items-center gap-3.5 pt-2"
+          className="flex items-center gap-3.5 pt-1"
         >
           <button
             onClick={onStartClick}

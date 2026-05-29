@@ -62,7 +62,7 @@ export default function Spotlight() {
   };
 
   return (
-    <section className="relative py-28 px-4 md:px-8 bg-black overflow-hidden z-10 select-none">
+    <section className="relative py-4 px-4 md:px-8 bg-black overflow-hidden z-10 select-none">
       
       {/* Background Volumetric Glow */}
       <div className="absolute right-0 top-1/4 w-[50vw] h-[50vw] rounded-full bg-radial-gradient(circle, rgba(245, 196, 79, 0.04) 0%, transparent 70%) pointer-events-none filter blur-3xl" />
@@ -126,7 +126,7 @@ export default function Spotlight() {
           </div>
 
           {/* Right Side: Memory Story Details */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-3">
             
             {/* Genre tags */}
             <div className="flex items-center gap-3">
